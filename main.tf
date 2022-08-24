@@ -9,6 +9,10 @@ terraform {
   }
 }
 
+
+data "aws_iam_role" "service_role" {
+  name = "aws-elasticbeanstalk-service-role"
+}
 // lookup acm certificate used for load balancer CNAME
 data "aws_acm_certificate" "site_cert" {
   domain = "*.tigrisconsulting.cloud" // This would be your acm cert
@@ -45,7 +49,7 @@ resource "aws_key_pair" "generated_key" {
 
 // create Elastic Beanstalk Application
 module "demo_eb_app" {
-  source     = "eb-environment"
+  source     = "./eb-environment"
   depends_on = [
     aws_key_pair.generated_key
   ]
@@ -72,6 +76,7 @@ module "demo_eb_app" {
   instance_type_family       = "t2"
   instance_types             = "t2.small"
 
+  service_role = data.aws_iam_role.service_role.arn
 
   environment_variables = {
     ENVIRONMENT = var.environment

@@ -196,31 +196,11 @@ resource "aws_elastic_beanstalk_environment" "beanstalk_env" {
   }
 
   ###=========================== Autoscale trigger ========================== ###
-  setting {
-    namespace = "aws:autoscaling:trigger"
-    name      = "Unit"
-    value     = var.auto_scaling_trigger_unit_type
-    resource  = ""
-  }
-
-  setting {
-    namespace = "aws:autoscaling:trigger"
-    name      = "LowerThreshold"
-    value     = var.auto_scaling_lower_threshold
-    resource  = ""
-  }
 
   setting {
     namespace = "aws:autoscaling:trigger"
     name      = "LowerBreachScaleIncrement"
     value     = var.auto_scaling_scale_down_increment
-    resource  = ""
-  }
-
-  setting {
-    namespace = "aws:autoscaling:trigger"
-    name      = "UpperThreshold"
-    value     = var.auto_scaling_upper_threshold
     resource  = ""
   }
 
@@ -248,34 +228,6 @@ resource "aws_elastic_beanstalk_environment" "beanstalk_env" {
   }
 
   ###=========================== ELB Policy Settings ========================== ###
-  setting {
-    namespace = "aws:elb:policies"
-    name      = "ConnectionSettingIdleTimeout"
-    value     = var.connection_idle_time_out
-    resource  = ""
-  }
-
-  setting {
-    namespace = "aws:elb:policies"
-    name      = "ConnectionDrainingTimeout"
-    value     = var.connection_draining_timeout
-    resource  = ""
-  }
-
-  setting {
-    namespace = "aws:elb:policies"
-    name      = "ConnectionDrainingEnabled"
-    value     = var.connection_draining_enabled
-    resource  = ""
-  }
-
-  ###=========================== Logging ========================== ###
-  setting {
-    namespace = "aws:elasticbeanstalk:hostmanager"
-    name      = "LogPublicationControl"
-    value     = var.enable_log_publication_control ? "true" : "false"
-    resource  = ""
-  }
 
   setting {
     namespace = "aws:elasticbeanstalk:cloudwatch:logs"
@@ -338,20 +290,6 @@ resource "aws_elastic_beanstalk_environment" "beanstalk_env" {
     namespace = "aws:elb:healthcheck"
     name      = "Interval"
     value     = "10"
-    resource  = ""
-  }
-
-  setting {
-    namespace = "aws:elb:healthcheck"
-    name      = "UnhealthyThreshold"
-    value     = var.unhealthy_threshold
-    resource  = ""
-  }
-
-  setting {
-    namespace = "aws:elb:healthcheck"
-    name      = "HealthyThreshold"
-    value     = var.healthy_threshold
     resource  = ""
   }
 
