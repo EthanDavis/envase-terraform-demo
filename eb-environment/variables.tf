@@ -18,6 +18,9 @@ variable "lb_type" {
 variable "enable_cross_zone_lb" {
   default = false
 }
+variable "health_check_path" {
+  default = "/health"
+}
 variable "subnets" {
   type        = string
   description = "comma seperated string of subnets"

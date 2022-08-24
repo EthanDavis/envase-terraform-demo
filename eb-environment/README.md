@@ -18,6 +18,7 @@
 | instance_type_family | | EC2 instance family type used by EB Environment e.g. t2|
 | instance_types | | EC2 instance types allowed to be provisioned by EB Environment| 
 | enable_cross_zone_lb | false | Allow Load Balancer to balancer across AZ's |
+|health_check_path | /health | Path used for health check |
 | solution_stack_name | | Solution stack used by EB Environment |
 | subnets | | Subnet EB Environment will run in|
 | ssl_cert | | SSL cert used for traffic on port 443 |

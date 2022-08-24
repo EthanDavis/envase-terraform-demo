@@ -1,4 +1,6 @@
-
+variable "loadbalancer_security_groups" {
+  default = ""
+}
 resource "aws_elastic_beanstalk_environment" "beanstalk_env" {
   application         = var.application_name
   name                = var.environment_name
@@ -122,7 +124,6 @@ resource "aws_elastic_beanstalk_environment" "beanstalk_env" {
     namespace = "aws:autoscaling:asg"
     name      = "Availability Zones"
     value     = var.availability_zone
-    resource  = ""
   }
 
   ###=========================== Load Balancer Settings ========================== ###
@@ -131,7 +132,18 @@ resource "aws_elastic_beanstalk_environment" "beanstalk_env" {
     name      = "CrossZone"
     namespace = "aws:elb:loadbalancer"
     value     = var.enable_cross_zone_lb
-    resource  = ""
+  }
+
+#  setting {
+#    namespace = "aws:elbv2:loadbalancer"
+#    name      = "SecurityGroups"
+#    value     = join(",", sort(var.loadbalancer_security_groups))
+#  }
+
+  setting {
+    namespace = "aws:elbv2:loadbalancer"
+    name      = "ManagedSecurityGroup"
+    value     = ""
   }
 
   setting {
@@ -150,6 +162,18 @@ resource "aws_elastic_beanstalk_environment" "beanstalk_env" {
     namespace = "aws:elbv2:listener:443"
     name      = "SSLCertificateArns"
     value     = var.ssl_cert
+  }
+
+  setting {
+    namespace = "aws:elbv2:listener:default"
+    name      = "ListenerEnabled"
+    value     = "false"
+  }
+
+  setting {
+    namespace = "aws:elbv2:listener:443"
+    name      = "SSLPolicy"
+    value     = "ELBSecurityPolicy-TLS-1-2-Ext-2018-06"
   }
   ###=========================== AutoScale Launch Settings ========================== ###
 
@@ -276,6 +300,13 @@ resource "aws_elastic_beanstalk_environment" "beanstalk_env" {
     namespace = "aws:elb:healthcheck"
     name      = "Target"
     value     = "TCP:80"
+    resource  = ""
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:environment:process:default"
+    name      = "HealthCheckPath"
+    value     = var.health_check_path
     resource  = ""
   }
 

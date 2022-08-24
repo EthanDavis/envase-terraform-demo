@@ -9,7 +9,7 @@ terraform {
   }
 }
 
-
+// lookup IAM role used by service
 data "aws_iam_role" "service_role" {
   name = "aws-elasticbeanstalk-service-role"
 }
@@ -69,7 +69,6 @@ module "demo_eb_app" {
   environment_name = "demo-node-app-${var.environment}"
   environment_type = "LoadBalanced"
   key_pair         = aws_key_pair.generated_key.key_name
-
 
   solution_stack_name        = data.aws_elastic_beanstalk_solution_stack.node_latest.name
   auto_scaling_instance_type = "t2.small"
