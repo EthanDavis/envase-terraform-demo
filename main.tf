@@ -64,7 +64,6 @@ module "demo_eb_app" {
 
   environment_name = "demo-node-app-${var.environment}"
   environment_type = "LoadBalanced"
-  tier             = "WebServer"
   key_pair         = aws_key_pair.generated_key.key_name
 
 

@@ -1,10 +1,14 @@
 variable "environment_name" {}
 variable "application_name" {}
-variable "tier" {}
+variable "tier" {
+  default = "WebServer"
+}
 variable "vpc_id" {}
 variable "enable_public_ip" {}
 variable "environment_type" {}
-variable "lb_type" {}
+variable "lb_type" {
+  default = "application"
+}
 variable "key_pair" {}
 variable "ami_id" {}
 variable "auto_scaling_instance_type" {}
