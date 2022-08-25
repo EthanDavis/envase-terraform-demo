@@ -1,5 +1,9 @@
 ## Elastic Beanstalk Environment Module
 ### Version 1
+This module will create an 
+1. elastic beanstalk environment and configure https. 
+2. Setup Security groups that allow inbound on 443 to the load balancer 
+3. Configure Security group that allows traffic to flow securely from the load balancer to the service.
 
 ## Module Variables
 
