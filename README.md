@@ -33,6 +33,9 @@ Elastic Beanstalk Environment for nodejs application
   2. [Install Terraform CLI](https://www.terraform.io/downloads)
   3. [Terraform Documentation](https://www.terraform.io/docs)
 
+# Things to consider
+You will need to change the vpc, subnets, acm cert outlined under `/variables/*`
+
 # How To Run
 If you are running infrastructure that is for a specific environment please follow the instruction below.
 For each environment you will need to run the following commands in the following order:

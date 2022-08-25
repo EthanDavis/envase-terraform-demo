@@ -6,3 +6,4 @@ variable "enable_cross_zone_lb" {
 }
 variable "subnets" {}
 variable "environment" {}
+variable "cert_domain" {}

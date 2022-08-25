@@ -16,7 +16,7 @@ data "aws_iam_role" "service_role" {
 
 # lookup acm certificate used for load balancer CNAME
 data "aws_acm_certificate" "site_cert" {
-  domain = "*.tigrisconsulting.cloud" // This would be your acm cert
+  domain = var.cert_domain// This would be your acm cert
 }
 
 # Lookup latest Elastic Beanstalk Stack
@@ -33,7 +33,10 @@ resource "aws_elastic_beanstalk_application" "demo_elb_app" {
 }
 
 data "aws_elastic_beanstalk_application" "demo_elb_app" {
-  name  = "envase-tf-demo"
+  name       = "envase-tf-demo"
+  depends_on = [
+    aws_elastic_beanstalk_application.demo_elb_app
+  ]
 }
 
 // Create key pair
