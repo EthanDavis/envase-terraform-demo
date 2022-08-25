@@ -1,6 +1,3 @@
-#variable "loadbalancer_security_groups" {
-#  default = ""
-#}
 
 
 resource "aws_elastic_beanstalk_environment" "beanstalk_env" {

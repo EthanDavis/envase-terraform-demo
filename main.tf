@@ -32,6 +32,10 @@ resource "aws_elastic_beanstalk_application" "demo_elb_app" {
   name  = "envase-tf-demo"
 }
 
+data "aws_elastic_beanstalk_application" "demo_elb_app" {
+  name  = "envase-tf-demo"
+}
+
 // Create key pair
 resource "tls_private_key" "public_key" {
   algorithm = "RSA"
@@ -55,14 +59,13 @@ module "demo_eb_app" {
     aws_key_pair.generated_key
   ]
 
-  application_name = aws_elastic_beanstalk_application.demo_elb_app[0].name
+  application_name = (var.environment == "non-prod") ? aws_elastic_beanstalk_application.demo_elb_app[0].name : data.aws_elastic_beanstalk_application.demo_elb_app.name
   ami_id           = "ami-00d7abbc91a25386f"
 
   vpc_id           = var.vpc_id
   subnets          = var.subnets
   elb_subnets      = var.subnets
   enable_public_ip = true
-#  instance_port    = 8080
 
   lb_type              = "application"
   enable_cross_zone_lb = var.enable_cross_zone_lb
