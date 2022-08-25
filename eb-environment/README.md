@@ -38,6 +38,6 @@ This module will create an
 | auto_scaling_scale_up_increment | 1 | Amount increased by at a time when scaling up|
 | rollback_on_failure |  true | Roll back if deployment to EB Environment fails |
 | environment_variables | | Map of EB Environment's environment variables |
-| logs_delete_on_terminate | false | delete logs when EB envrionment is terminated |
+| logs_delete_on_terminate | true | delete logs when EB envrionment is terminated |
 | enable_stream_logs | true | Allow EB Environment logs to be streamed to cloudwatch|
-|connection_idle_time_out| 60| Load balancer timeout |
+| connection_idle_time_out| 60| Load balancer timeout |
