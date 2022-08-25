@@ -18,21 +18,22 @@
 | instance_type_family | | EC2 instance family type used by EB Environment e.g. t2|
 | instance_types | | EC2 instance types allowed to be provisioned by EB Environment| 
 | enable_cross_zone_lb | false | Allow Load Balancer to balancer across AZ's |
-|health_check_path | /health | Path used for health check |
+| health_check_path | /health | Path used for health check |
 | solution_stack_name | | Solution stack used by EB Environment |
 | subnets | | Subnet EB Environment will run in|
 | ssl_cert | | SSL cert used for traffic on port 443 |
 | elb_scheme | | Schema used by EB Environment | 
 | service_role | | IAM role used by EB Environment | 
-|deployment_policy | Rolling | Deployment policy used by EB Environment |
+| deployment_policy | Rolling | Deployment policy used by EB Environment |
 | ssh_source_restriction | tcp,22,22,34.200.4.86/32 | port and IP restrictions by EB Environment EC2 |
-|default_ssh_port | 22 | Port used for ssh |
+| default_ssh_port | 22 | Port used for ssh |
 | availability_zone | ANY | AZ's used for auto scaling |
-|auto_scaling_min | 1 |  Min number of running instances |
+| auto_scaling_min | 1 |  Min number of running instances |
 | auto_scaling_max | 2 | Max number of running instances |
-|auto_scaling_scale_down_increment -1 | Amount decreased by at a time when scaling down|
-|auto_scaling_scale_up_increment | 1 | Amount increased by at a time when scaling up|
+| auto_scaling_scale_down_increment | -1 | Amount decreased by at a time when scaling down|
+| auto_scaling_scale_up_increment | 1 | Amount increased by at a time when scaling up|
 | rollback_on_failure |  true | Roll back if deployment to EB Environment fails |
-|environment_variables | | Map of EB Environment's environment variables |
+| environment_variables | | Map of EB Environment's environment variables |
 | logs_delete_on_terminate | false | delete logs when EB envrionment is terminated |
-|enable_stream_logs | true | Allow EB Environment logs to be streamed to cloudwatch|
+| enable_stream_logs | true | Allow EB Environment logs to be streamed to cloudwatch|
+|connection_idle_time_out| 60| Load balancer timeout |

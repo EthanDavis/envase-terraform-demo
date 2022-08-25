@@ -44,7 +44,8 @@ variable "deployment_policy" {
   default = "Rolling"
 }
 variable "instance_port" {
-  default = "80"
+  type = number
+  default = 8080
 }
 variable "auto_scaling_min" {
   default = "1"
@@ -74,9 +75,6 @@ variable "rollback_on_failure" {
   default = "true"
 }
 
-variable "elb_instance_port" {
-  default = "80"
-}
 variable "health_reporting_system_type" {
   default = "enhanced"
 }
@@ -88,7 +86,10 @@ variable "enable_stream_logs" {
   default = "true"
 }
 variable "logs_delete_on_terminate" {
-  default = "false"
+  default = "true"
+}
+variable "connection_idle_time_out" {
+  default = "60"
 }
 #================ Application Environment Variable ================#
 variable "environment_variables" {
