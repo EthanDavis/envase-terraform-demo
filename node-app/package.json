@@ -1,0 +1,18 @@
+{
+  "name": "demo-node-app",
+  "version": "1.0.0",
+  "description": "Simple node app used to demo terrform eb module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Ethan Davis",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.18.1"
+  }
+}
