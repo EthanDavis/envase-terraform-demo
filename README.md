@@ -8,10 +8,12 @@ Elastic Beanstalk Environment for nodejs application
   1. [Install AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
      1. Important make sure you install CLI v2
      2. Configure you cli access
-     3. Verify you have setup your aws_access_key_id and aws_secret_access_key setup correctly by
+     3. [Create a named profile](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
+        1. run `aws configure --profile`
+     4. Verify you have set up your aws_access_key_id and aws_secret_access_key setup correctly by
         running the following command `cat ~/.aws/credentials` you should see something like so:
      
-     4. 
+     5. 
      ```
      [your-profile-name]
         aws_access_key_id=test
@@ -29,6 +31,7 @@ Elastic Beanstalk Environment for nodejs application
      ```
      
   2. [Install Terraform CLI](https://www.terraform.io/downloads)
+  3. [Terraform Documentation](https://www.terraform.io/docs)
 
 # How To Run
 If you are running infrastructure that is for a specific environment please follow the instruction below.
