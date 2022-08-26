@@ -44,4 +44,8 @@ For each environment you will need to run the following commands in the followin
 2. `terraform plan -var-file="./variables/${environment}.tfvars"`
 3. `terraform apply -var-file="./variables/${environment}.tfvars" -auto-approve`
 
+# Destroying your infrastructure 
+1. `terraform init -backend-config="key=${application-name}/${environment}/terraform.tfstate" -reconfigure`
+2. `terraform plan -destroy -var-file="./variables/${environment}.tfvars"`
+3. `terraform destroy -var-file="./variables/${environment}.tfvars" -auto-approve`
 
